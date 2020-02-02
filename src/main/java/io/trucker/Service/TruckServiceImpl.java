@@ -1,24 +1,21 @@
 package io.trucker.Service;
 
-import io.trucker.Entity.TruckData;
-import io.trucker.Exception.BadRequestException;
+import io.trucker.Entity.Truck;
 import io.trucker.Repository.TruckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TruckServiceImpl implements TruckService{
+public class TruckServiceImpl implements TruckService {
 
     @Autowired
     TruckRepository truckRepository;
 
-    @Transactional
-    public TruckData create(TruckData truckData) {
-        if(truckData == null){
-            throw new BadRequestException("input object is Null");
+    @Override
+    public Truck createUpdateTruck(Truck truck) {
+        if(truckRepository.existsById(truck.getVin())){
+            truckRepository.deleteById(truck.getVin());
         }
-        System.out.println(truckData);
-        return truckRepository.save(truckData);
+        return truckRepository.save(truck);
     }
 }

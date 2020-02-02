@@ -1,8 +1,7 @@
 package io.trucker.Service;
 
-import io.trucker.Entity.TruckData;
+import io.trucker.Entity.Truck;
 
 public interface TruckService {
-    TruckData create(TruckData truckData);
-
+    Truck createUpdateTruck(Truck truck);
 }
