@@ -2,10 +2,10 @@ package io.trucker.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
 
 @Entity
 public class Truck {
@@ -19,6 +19,8 @@ public class Truck {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date lastServiceDate;
 
+//    @OneToMany(mappedBy = "truck")
+//    private List<TruckData> truckData = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -79,4 +81,12 @@ public class Truck {
     public void setLastServiceDate(Date lastServiceDate) {
         this.lastServiceDate = lastServiceDate;
     }
+
+//    public List<TruckData> getTruckData() {
+//        return truckData;
+//    }
+//
+//    public void setTruckData(List<TruckData> truckData) {
+//        this.truckData = truckData;
+//    }
 }

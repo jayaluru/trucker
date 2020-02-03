@@ -27,6 +27,17 @@ public class TruckData {
     private Tires tires;
 
 
+    @ManyToOne
+    @JoinColumn(name = "vin",  insertable = false, updatable = false)
+    private Truck truck;
+
+    public Truck getTruck() {
+        return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
 
     public TruckData(){
         this.id = UUID.randomUUID().toString();

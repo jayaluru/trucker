@@ -1,5 +1,6 @@
 package io.trucker.Service;
 
+import io.trucker.Entity.Truck;
 import io.trucker.Entity.TruckData;
 import io.trucker.Exception.BadRequestException;
 import io.trucker.Repository.TruckdataRepository;
@@ -20,5 +21,10 @@ public class TruckdataServiceImpl implements TruckdataService {
         }
         System.out.println(truckData);
         return truckdataRepository.save(truckData);
+    }
+
+    @Transactional
+    public Iterable<TruckData> findAll(){
+        return truckdataRepository.findAll();
     }
 }
