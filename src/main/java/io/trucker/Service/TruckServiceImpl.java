@@ -22,8 +22,18 @@ public class TruckServiceImpl implements TruckService {
     }
 
     @Override
-    public List<Truck> allFilters(String vin_id, String make, String redline_rpm, int year){
-        return truckRepository.allFilters(year);
+    public List<Truck> allFilters(String vin_id, String make, int redline_rpm, int year){
+        return truckRepository.allFilters(vin_id, make, redline_rpm, year);
+    }
+
+    @Override
+    public List<Truck> allFiltersYear(int year){
+        return truckRepository.allFiltersYear(year);
+    }
+
+    @Override
+    public List<Truck> allFiltersVinMake(String vin_id, String make){
+        return truckRepository.allFiltersVinMake(vin_id, make);
     }
 
 }

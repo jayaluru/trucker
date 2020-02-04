@@ -64,12 +64,27 @@ public class UniversalController {
     }
 
     @GetMapping("/getAllTruck")
-    public String getFoos(@RequestParam(defaultValue = "test") String vin,
+    public String getAllTruck(@RequestParam(defaultValue = "%") String vin,
                           @RequestParam(defaultValue = "%") String make,
-                          @RequestParam(defaultValue = "10000") String redline_rpm,
+                          @RequestParam(defaultValue = "%") int redline_rpm,
                           @RequestParam(defaultValue = "2011") int year) {
-        System.out.println("ID: " + vin + "ID: " + make + "ID: " + redline_rpm + "ID: " + year) ;
+        System.out.println("ID: " + vin + "make: " + make + "redline rpm: " + redline_rpm + "year: " + year) ;
         List<Truck> trucks = truckService.allFilters(vin, make, redline_rpm, year);
+        return new Gson().toJson(trucks);
+    }
+
+    @GetMapping("/getAllTruckYear")
+    public String getAllTruckYear(@RequestParam(defaultValue = "2011") int year) {
+        System.out.println("year " + year) ;
+        List<Truck> trucks = truckService.allFiltersYear(year);
+        return new Gson().toJson(trucks);
+    }
+
+    @GetMapping("/getAllTruckVinMake")
+    public String getAllTruckYear(@RequestParam(defaultValue = "%") String vin,
+                                  @RequestParam(defaultValue = "%") String make) {
+        System.out.println("ID: " + vin + "make: " + make ) ;
+        List<Truck> trucks = truckService.allFiltersVinMake(vin, make);
         return new Gson().toJson(trucks);
     }
 
