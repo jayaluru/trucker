@@ -11,6 +11,7 @@ import java.util.List;
 public class Truck {
 
     @Id
+    @Column(name = "vin_id")
     private String vin;
     private String make;
     private int year;
@@ -19,8 +20,11 @@ public class Truck {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date lastServiceDate;
 
-//    @OneToMany(mappedBy = "truck")
-//    private List<TruckData> truckData = new ArrayList<>();
+    @OneToMany(mappedBy = "truck")
+    private List<TruckData> truckData = new ArrayList<>();
+
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<TruckData> truckData;
 
     @Override
     public String toString() {
@@ -82,11 +86,11 @@ public class Truck {
         this.lastServiceDate = lastServiceDate;
     }
 
-//    public List<TruckData> getTruckData() {
-//        return truckData;
-//    }
-//
-//    public void setTruckData(List<TruckData> truckData) {
-//        this.truckData = truckData;
-//    }
+    public List<TruckData> getTruckData() {
+        return truckData;
+    }
+
+    public void setTruckData(List<TruckData> truckData) {
+        this.truckData = truckData;
+    }
 }

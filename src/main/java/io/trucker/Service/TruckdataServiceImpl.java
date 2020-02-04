@@ -19,7 +19,7 @@ public class TruckdataServiceImpl implements TruckdataService {
         if(truckData == null){
             throw new BadRequestException("input object is Null");
         }
-        System.out.println(truckData);
+        //System.out.println(truckData);
         return truckdataRepository.save(truckData);
     }
 

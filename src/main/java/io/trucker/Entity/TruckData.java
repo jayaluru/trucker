@@ -25,10 +25,9 @@ public class TruckData {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Tires tires;
-
-
+//  ,  insertable = false, updatable = false
     @ManyToOne
-    @JoinColumn(name = "vin",  insertable = false, updatable = false)
+    @JoinColumn(name = "vin_id")
     private Truck truck;
 
     public Truck getTruck() {
