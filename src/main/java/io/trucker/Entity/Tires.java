@@ -27,6 +27,10 @@ public class Tires {
                 '}';
     }
 
+    public int[] getTirePressureArray(){
+        return new int[] {getFrontLeft(), getFrontRight(), getRearLeft(), getRearRight()};
+    }
+
     public int getFrontLeft() {
         return frontLeft;
     }

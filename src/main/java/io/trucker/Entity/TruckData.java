@@ -25,8 +25,18 @@ public class TruckData {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Tires tires;
+//  ,  insertable = false, updatable = false
+    @ManyToOne
+    @JoinColumn(name = "vin_id")
+    private Truck truck;
 
+    public Truck getTruck() {
+        return truck;
+    }
 
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
 
     public TruckData(){
         this.id = UUID.randomUUID().toString();
