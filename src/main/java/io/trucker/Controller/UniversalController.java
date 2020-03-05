@@ -24,6 +24,11 @@ public class UniversalController {
     AlertService alertService;
 
 
+    @GetMapping("/getTest")
+    public String getTest() {
+        System.out.println("testTrucker controller called") ;
+        return new String("getTest info");
+    }
 
 
     @PostMapping(path = "/readings", consumes = "application/json", produces = "application/json")
